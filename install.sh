@@ -121,13 +121,16 @@ function percnet_to_brightness() {
 
 # install system required
 function install_sysreq(){
-	SOFT=$(dpkg -l $SOFTWARE_LIST | grep "<none>")
-	if [ ! -z "$SOFT" ]; then
-		apt update
+	SOFT=$(dpkg -l $SOFTWARE_LIST 2>&1 | grep "no packages found")
+	if [ -n "$SOFT" ]; then
+        echo "install scons"
+        apt update
 		apt -y install $SOFTWARE_LIST
-	fi
+    fi
+   
 	SOFT=$(pip search rpi-ws281x | grep "INSTALLED")
 	if [ -z "$SOFT" ]; then
+        echo "Install rpi-ws281x"
 		pip install rpi-ws281x
 		echo "rpi-ws281x install complete!"
 	else
