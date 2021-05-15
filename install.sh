@@ -128,14 +128,14 @@ function install_sysreq(){
 		apt -y install $SOFTWARE_LIST
     fi
    
-	SOFT=$(pip search rpi-ws281x | grep "INSTALLED")
-	if [ -z "$SOFT" ]; then
-        echo "Install rpi-ws281x"
+	# SOFT=$(pip search rpi-ws281x | grep "INSTALLED")
+	# if [ -z "$SOFT" ]; then
+        # echo "Install rpi-ws281x"
 		pip install rpi-ws281x
-		echo "rpi-ws281x install complete!"
-	else
-		echo "rpi-ws281x already exists."
-	fi
+		# echo "rpi-ws281x install complete!"
+	# else
+		# echo "rpi-ws281x already exists."
+	# fi
 }
 
 function check_safeshutdown(){
